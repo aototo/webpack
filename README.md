@@ -171,7 +171,8 @@ module.exports = {
 
 
 ```
-
+test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/, 各种需要用的文件格式
+loader: "file?name=assets/images/[hash][name].[ext]"   [hash]会生成hash的字符，也可以选择你要的生成的个数。
 ####上线
 另一份配置文件
 用 webpack --config webpack.min.js 指定另一个名字的配置文件
@@ -182,7 +183,7 @@ module.exports = {
 注意在这个文件下 ，webpack-dev-server 就无法使用了
 
 
-为了解决react使用hot 而无法在配置中使用query 配置。
+为了解决react使用hot 而无法在配置中使用query 配置。这是个坑要注意，除非你在根目录下有.babelrc 的文件。
 
 	var babelPresets = {presets: ['react', 'es2015']};
 	loaders: ['react-hot', 'babel-loader?'+JSON.stringify(babelPresets)]
