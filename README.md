@@ -127,7 +127,7 @@ In webpack.config.js module loaders file inside add test
 
 	{ test: /\.png$/, loader: "file?name=dist/app/assets/[hash].png"}
 
-下面是输出的文件，css用了extract-text-webpack-plugin 插件单独导出了，如果在开发阶段可以不使用这个 , url-loader 其实就是file-loader  的封装，用它来处理要加载的文件
+下面是输出的文件，css用了extract-text-webpack-plugin 插件单独导出css文件，要注意的是css里面的图片,字体的引用问题，如果在开发阶段可以不使用 , url-loader 其实就是file-loader  的封装，用它来处理要加载的文件
 ```javascript
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require("webpack");
@@ -183,7 +183,7 @@ loader: "file?name=assets/images/[hash][name].[ext]"   [hash]会生成hash的字
 注意在这个文件下 ，webpack-dev-server 就无法使用了
 
 
-为了解决react使用hot 而无法在配置中使用query 配置。这是个坑要注意，除非你在根目录下有.babelrc 的文件。
+为了解决react使用hot 而无法在配置中使用query 配置。这是个坑要注意，除非你在根目录下有.babelrc 的文件，不然就像下面一样拼接的方式，不然会报错。
 
 	var babelPresets = {presets: ['react', 'es2015']};
 	loaders: ['react-hot', 'babel-loader?'+JSON.stringify(babelPresets)]
@@ -191,7 +191,7 @@ loader: "file?name=assets/images/[hash][name].[ext]"   [hash]会生成hash的字
 
 
 
-####react-hot-boilerplate 配置
+####react-hot-boilerplate 配置  这是一位大神配置的，自定义了一份server 配置文件，可以前去参观下载！
 https://github.com/gaearon/react-hot-boilerplate
 
 ```javascript
