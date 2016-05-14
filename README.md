@@ -245,7 +245,7 @@ new WebpackDevServer(webpack(config), {
 
 ```
 
-本人在webpack中常用的几个东西
+本人在webpack中常用的几个utils
 package.json 
 
 `dependencies` and `devDependencies`
