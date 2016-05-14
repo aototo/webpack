@@ -245,3 +245,65 @@ new WebpackDevServer(webpack(config), {
 
 ```
 
+本人在webpack中常用的几个东西
+package.json 
+
+`dependencies` and `devDependencies`
+
+dependencies 用于生产环境
+```javascript
+"classnames": "^2.1.3",
+"normalize.css": "^3.0.3",
+"react": "^0.13.3"
+```
+devDependencies 开发环境
+```javascript
+"devDependencies": {
+	..
+	"autoprefixer-core": "..",
+	"opn": "..",
+	"template-html-loader": "..",
+	"node-sass":".."
+}
+```
+autoprefixer-core  添加css3 前缀
+>Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
+
+opn
+>open a file or url in the user's preferred application
+
+``` 
+opn("http://localhost:8000/"); 
+```
+
+template-html-loader   webpack/loaders.js 
+
+```javascript
+var htmlLoader = [
+  'file-loader?name=[path][name].[ext]',
+  'template-html-loader?' + [
+    'raw=true',
+    'engine=lodash',
+    'version=' + pkg.version,
+    'title=' + pkg.name,
+    'debug=' + DEBUG
+  ].join('&')
+].join('!');
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title><%= title %></title>
+  <% if (debug === false) { %>
+  <link type="text/css" rel="stylesheet" media="all" href="css/app.<%= version %>.css" />
+  <% } %>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="js/app.<%= version %>.js"></script>
+</body>
+
+```
+
+
+
