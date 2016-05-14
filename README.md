@@ -247,10 +247,7 @@ new WebpackDevServer(webpack(config), {
 
 这个server配置可以这个修改
 ```javascript
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
-
+...
 new WebpackDevServer(webpack(config), {
     contentBase: path.resolve("这里url默认指定的文件位置 比如/app"),
     hot: true,
@@ -258,11 +255,7 @@ new WebpackDevServer(webpack(config), {
     inline: true,
     stats: { colors: true }
 }).listen(3000, 'localhost', function (err, result) {
-  if (err) {
-    return console.log(err);
-  }
-
-  console.log('Listening at http://localhost:3000/');
+  .....
 });
 
 ```
